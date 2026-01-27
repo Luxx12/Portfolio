@@ -10,12 +10,17 @@ export default function Navbar({ currentView, setCurrentView }) {
     { id: 'game', label: 'Play' },
   ]
 
+  const handleNav = (id) => {
+    setCurrentView(id)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }
+
   return (
     <header className="w-full border-b-2 border-terminal-border py-3 px-4 md:px-6 flex justify-center flex-wrap gap-2 md:gap-4">
       {navItems.map((item, index) => (
         <span key={item.id} className="flex items-center gap-2 md:gap-4">
           <span
-            onClick={() => setCurrentView(item.id)}
+            onClick={() => handleNav(item.id)}
             className={`text-xs md:text-sm cursor-pointer transition-colors hover:text-terminal-accent-bright ${
               currentView === item.id ? 'text-terminal-accent' : 'text-terminal-dim'
             }`}
