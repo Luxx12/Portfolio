@@ -12,11 +12,13 @@ export default function Navbar({ currentView, setCurrentView }) {
 
   const handleNav = (id) => {
     setCurrentView(id)
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 10)
   }
 
   return (
-    <header className="w-full border-b-2 border-terminal-border py-3 px-4 md:px-6 flex justify-center flex-wrap gap-2 md:gap-4">
+    <header className="w-full border-b-2 border-terminal-border py-3 px-4 md:px-6 flex justify-center flex-wrap gap-2 md:gap-4 sticky top-0 bg-terminal-bg z-50">
       {navItems.map((item, index) => (
         <span key={item.id} className="flex items-center gap-2 md:gap-4">
           <span
