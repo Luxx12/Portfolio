@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background-color: #0a1628;
+  color: #e0e6f0;
+  min-height: 100vh;
+}
+
+input, textarea, button {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.ascii-art {
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: pre;
+}
+
+.ascii-art-large {
+  font-size: 8px;
+  line-height: 1.1;
+  white-space: pre;
+}
+
+.ascii-art-home {
+  font-size: 8px;
+  line-height: 1.1;
+  white-space: pre;
+}
+
+@media (max-width: 768px) {
+  .ascii-art {
+    font-size: 6px;
+    line-height: 1.1;
+  }
+  .ascii-art-large {
+    font-size: 4px;
+    line-height: 1;
+  }
+  .ascii-art-home {
+    font-size: 4px;
+    line-height: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .ascii-art {
+    font-size: 4.5px;
+    line-height: 1;
+  }
+  .ascii-art-large {
+    font-size: 3px;
+  }
+  .ascii-art-home {
+    font-size: 3px;
+  }
+}
