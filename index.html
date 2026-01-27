@@ -1260,14 +1260,17 @@
         }
 
         function drawObstacles() {
-            ctx.fillStyle = colors.obstacle;
             obstacles.forEach(obs => {
                 if (obs.type === 'high') {
-                    // Flying obstacle (bird-like)
+                    // Flying obstacle (bird-like) - white
+                    ctx.fillStyle = colors.text;
                     ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
-                    ctx.fillRect(obs.x + 5, obs.y - 5, 15, 5);
+                    // Wings
+                    ctx.fillRect(obs.x + 10, obs.y - 8, 25, 8);
+                    ctx.fillRect(obs.x + 15, obs.y + obs.height, 20, 8);
                 } else {
-                    // Ground obstacle (cactus-like)
+                    // Ground obstacle (cactus-like) - green
+                    ctx.fillStyle = colors.obstacle;
                     ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
                     if (obs.height > 30) {
                         ctx.fillRect(obs.x - 8, obs.y + 15, 8, 10);
@@ -1303,9 +1306,9 @@
             if (type === 'high') {
                 obstacles.push({
                     x: canvas.width,
-                    y: 100 + Math.random() * 30,
-                    width: 30,
-                    height: 20,
+                    y: 70 + Math.random() * 40,
+                    width: 50,
+                    height: 40,
                     type: 'high'
                 });
             } else {
