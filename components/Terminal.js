@@ -186,19 +186,16 @@ export default function Terminal({ setCurrentView }) {
       <form onSubmit={handleSubmit} className="flex items-center gap-2 mb-4">
         <span className="text-terminal-success">visitor</span>
         <span className="text-terminal-text">:~$</span>
-        <div className="relative flex items-center">
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="terminal-input bg-transparent border-none outline-none text-terminal-text w-32 md:w-48"
-            autoFocus
-            autoComplete="off"
-            spellCheck="false"
-          />
-          <span className="cursor"></span>
-        </div>
+        <input
+          ref={inputRef}
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="bg-transparent border-none outline-none text-terminal-text w-32 md:w-48 caret-terminal-accent-bright"
+          autoFocus
+          autoComplete="off"
+          spellCheck="false"
+        />
       </form>
 
       <div className="space-y-2">
