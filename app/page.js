@@ -12,9 +12,11 @@ import GameView from '@/components/GameView'
 
 export default function Home() {
   const [currentView, setCurrentView] = useState('home')
+  const [viewKey, setViewKey] = useState(0)
 
   const handleViewChange = (view) => {
     setCurrentView(view)
+    setViewKey(prev => prev + 1)
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
@@ -23,12 +25,14 @@ export default function Home() {
       <Navbar currentView={currentView} setCurrentView={handleViewChange} />
       
       <main className="flex-1 py-10 px-4 md:px-5 max-w-[700px] w-full">
-        {currentView === 'home' && <HomeView />}
-        {currentView === 'about' && <AboutView />}
-        {currentView === 'projects' && <ProjectsView />}
-        {currentView === 'resume' && <ResumeView />}
-        {currentView === 'contact' && <ContactView />}
-        {currentView === 'game' && <GameView />}
+        <div key={viewKey} className="page-transition">
+          {currentView === 'home' && <HomeView />}
+          {currentView === 'about' && <AboutView />}
+          {currentView === 'projects' && <ProjectsView />}
+          {currentView === 'resume' && <ResumeView />}
+          {currentView === 'contact' && <ContactView />}
+          {currentView === 'game' && <GameView />}
+        </div>
 
         <div className="mt-10">
           <Terminal setCurrentView={handleViewChange} />
