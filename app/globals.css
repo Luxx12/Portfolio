@@ -21,6 +21,43 @@ input, textarea, button {
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* Blinking cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.terminal-input {
+  caret-color: transparent;
+}
+
+.terminal-input:focus + .cursor,
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background-color: #7ec8ff;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+/* Page transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: fadeIn 0.3s ease-out;
+}
+
 .ascii-art {
   font-size: 10px;
   line-height: 1.2;
