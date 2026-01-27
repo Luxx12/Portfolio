@@ -405,6 +405,174 @@
             background: var(--accent-color);
             color: var(--bg-color);
         }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .header {
+                gap: 10px;
+                padding: 12px 10px;
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                font-size: 12px;
+            }
+
+            .nav-divider {
+                font-size: 12px;
+            }
+
+            .terminal-container {
+                padding: 20px 15px;
+            }
+
+            .ascii-art {
+                font-size: 6px;
+                line-height: 1.1;
+            }
+
+            .ascii-art-large {
+                font-size: 4px;
+                line-height: 1;
+            }
+
+            .subtitle {
+                font-size: 14px;
+            }
+
+            .bio {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .project-card {
+                padding: 15px;
+            }
+
+            .project-name {
+                font-size: 16px;
+            }
+
+            .item {
+                padding-left: 15px;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+
+            .command-list {
+                grid-template-columns: 100px 1fr;
+                gap: 6px 15px;
+                font-size: 13px;
+            }
+
+            #command-input {
+                width: 150px;
+            }
+
+            /* Game responsive */
+            #game-canvas {
+                width: 100%;
+                max-width: 350px;
+                height: 120px;
+            }
+
+            .game-info {
+                gap: 20px;
+                font-size: 14px;
+            }
+
+            .game-instructions {
+                font-size: 12px;
+            }
+
+            /* Contact form */
+            .contact-form-container {
+                margin: 20px auto 0;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                gap: 8px;
+                padding: 10px 8px;
+            }
+
+            .nav-link {
+                font-size: 11px;
+            }
+
+            .nav-divider {
+                font-size: 10px;
+            }
+
+            .ascii-art {
+                font-size: 4.5px;
+                line-height: 1;
+            }
+
+            .ascii-art-large {
+                font-size: 3px;
+            }
+
+            .terminal-container {
+                padding: 15px 10px;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .command-list {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .command-list .cmd {
+                margin-top: 8px;
+            }
+
+            #command-input {
+                width: 120px;
+            }
+
+            .game-instructions {
+                font-size: 11px;
+                text-align: center;
+            }
+
+            .game-info {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        /* Touch-friendly game button */
+        .touch-jump-btn {
+            display: none;
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-family: inherit;
+            font-size: 14px;
+            padding: 15px 30px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .touch-jump-btn {
+                display: inline-block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -717,6 +885,7 @@
                     </div>
                     
                     <p class="game-instructions">Press <span class="highlight">SPACE</span> or <span class="highlight">UP</span> to jump | <span class="highlight">DOWN</span> to duck</p>
+                    <p class="game-instructions">On mobile: <span class="highlight">TAP</span> to jump | <span class="highlight">TAP & HOLD</span> to duck</p>
                 </div>
             </div>
         </div>
@@ -1298,6 +1467,65 @@
                 player.ducking = false;
             }
         });
+
+        // Touch controls for mobile
+        let touchStartTime = 0;
+        let touchHoldTimer = null;
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            if (!gameView.classList.contains('hidden')) {
+                touchStartTime = Date.now();
+                
+                if (!gameRunning) {
+                    startGame();
+                    return;
+                }
+                
+                // Start hold timer for ducking
+                touchHoldTimer = setTimeout(() => {
+                    if (!player.jumping) {
+                        player.ducking = true;
+                    }
+                }, 150);
+                
+                // Jump on tap
+                if (!player.jumping && player.y >= player.groundY) {
+                    player.velocityY = jumpForce;
+                    player.jumping = true;
+                    player.ducking = false;
+                }
+            }
+        });
+
+        canvas.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            if (touchHoldTimer) {
+                clearTimeout(touchHoldTimer);
+                touchHoldTimer = null;
+            }
+            player.ducking = false;
+        });
+
+        // Prevent scrolling when touching game area
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        });
+
+        // Handle canvas resize for mobile
+        function resizeCanvas() {
+            if (window.innerWidth <= 768) {
+                const maxWidth = Math.min(350, window.innerWidth - 40);
+                canvas.style.width = maxWidth + 'px';
+                canvas.style.height = (maxWidth * 200 / 600) + 'px';
+            } else {
+                canvas.style.width = '600px';
+                canvas.style.height = '200px';
+            }
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
         // Initial draw
         draw();
