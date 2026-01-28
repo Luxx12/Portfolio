@@ -57,6 +57,15 @@ export default function ContactView() {
             Send Message
           </button>
         </form>
+
+        <div className="mt-10 pt-8 border-t-2 border-terminal-border">
+          <div className="text-terminal-accent-bright font-bold mb-4 text-lg">Socials</div>
+          <div className="space-y-2">
+            <p><span className="text-terminal-accent">Email: </span><a className="text-terminal-text hover:text-terminal-accent-bright hover:underline" href="mailto:barretgaby12@gmail.com">barretgaby12@gmail.com</a></p>
+            <p><span className="text-terminal-accent">GitHub: </span><a className="text-terminal-text hover:text-terminal-accent-bright hover:underline" href="https://github.com/Luxx12" target="_blank">github.com/Luxx12</a></p>
+            <p><span className="text-terminal-accent">LinkedIn: </span><a className="text-terminal-text hover:text-terminal-accent-bright hover:underline" href="https://linkedin.com/in/gabriel-b-otero" target="_blank">linkedin.com/in/gabriel-b-otero</a></p>
+          </div>
+        </div>
       </div>
     </div>
   )
