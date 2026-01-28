@@ -4,7 +4,7 @@ export default function AboutView() {
   return (
     <div className="text-center">
       <img 
-        src="/headshot.jpg" 
+        src="/headshot.png" 
         alt="Gabriel Barreto Otero" 
         className="w-44 h-44 object-cover border-2 border-terminal-border mx-auto mb-5"
       />
