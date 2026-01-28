@@ -122,6 +122,14 @@ export default function ResumeView() {
           <p><span className="text-terminal-accent">Email: </span><a className="text-terminal-accent hover:text-terminal-accent-bright hover:underline" href="mailto:barretgaby12@gmail.com">barretgaby12@gmail.com</a></p>
           <p><span className="text-terminal-accent">GitHub: </span><a className="text-terminal-accent hover:text-terminal-accent-bright hover:underline" href="https://github.com/Luxx12" target="_blank">github.com/Luxx12</a></p>
           <p><span className="text-terminal-accent">LinkedIn: </span><a className="text-terminal-accent hover:text-terminal-accent-bright hover:underline" href="https://linkedin.com/in/gabriel-b-otero" target="_blank">linkedin.com/in/gabriel-b-otero</a></p>
+          
+          <a 
+            href="/resume.pdf" 
+            download="Gabriel_Barreto_Otero_Resume.pdf"
+            className="inline-block mt-6 bg-transparent border-2 border-terminal-accent text-terminal-accent py-2 px-4 cursor-pointer transition-all hover:bg-terminal-accent hover:text-terminal-bg"
+          >
+            Download Resume (PDF)
+          </a>
         </div>
       </div>
     </div>
