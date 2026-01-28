@@ -21,7 +21,7 @@ export default function ResumeView() {
             <div className="text-terminal-dim text-sm">Orlando, FL | Expected May 2029</div>
             <div className="mt-2">
               <p>B.S. in Computer Science</p>
-              <p>GPA: <span className="text-terminal-accent-bright">4.0</span></p>
+              <p>GPA: <span className="text-terminal-accent-bright">3.7</span></p>
             </div>
           </div>
         </div>
