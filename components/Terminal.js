@@ -38,7 +38,7 @@ export default function Terminal({ setCurrentView }) {
           <span className="text-terminal-accent">projects</span><span>View my projects</span>
           <span className="text-terminal-accent">resume</span><span>View full resume</span>
           <span className="text-terminal-accent">contact</span><span>Contact form page</span>
-          <span className="text-terminal-accent">play</span><span>Play the runner game</span>
+          <span className="text-terminal-accent">play</span><span>Play Road Runner</span>
           <span className="text-terminal-accent">education</span><span>My academic background</span>
           <span className="text-terminal-accent">experience</span><span>Work experience</span>
           <span className="text-terminal-accent">skills</span><span>Technical skills</span>
