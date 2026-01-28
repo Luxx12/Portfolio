@@ -3,6 +3,12 @@
 export default function AboutView() {
   return (
     <div className="text-center">
+      <img 
+        src="/headshot.jpg" 
+        alt="Gabriel Barreto Otero" 
+        className="w-44 h-44 object-cover border-2 border-terminal-border mx-auto mb-5"
+      />
+      
       <pre className="ascii-art-large text-terminal-text mb-5">
 {` ██████╗  █████╗ ██████╗ ██████╗ ██╗███████╗██╗     
 ██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██║██╔════╝██║     
@@ -28,7 +34,7 @@ export default function AboutView() {
       
       <div className="text-left leading-7 space-y-4 text-sm md:text-base">
         <p>
-          Hi, I'm <span className="text-terminal-accent-bright">Gabriel Barreto Otero</span>, a first-year Computer Science student at the <span className="text-terminal-accent-bright">University of Central Florida</span> with a 3.7 GPA and a genuine love for building things that people enjoy using.
+          Hi, I'm <span className="text-terminal-accent-bright">Gabriel Barreto Otero</span>, a first-year Computer Science student at the <span className="text-terminal-accent-bright">University of Central Florida</span> with a 4.0 GPA and a genuine love for building things that people enjoy using.
         </p>
         
         <p>
