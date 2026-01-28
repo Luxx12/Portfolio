@@ -50,6 +50,11 @@ export default function GameView() {
     const jumpForce = -14
     const state = gameStateRef.current
 
+    // Wait for font to load
+    document.fonts.ready.then(() => {
+      draw()
+    })
+
     function drawPlayer() {
       ctx.fillStyle = colors.player
       const height = state.player.ducking ? 20 : state.player.height
@@ -90,7 +95,7 @@ export default function GameView() {
 
     function drawScore() {
       ctx.fillStyle = colors.text
-      ctx.font = '16px JetBrains Mono'
+      ctx.font = "16px 'JetBrains Mono', monospace"
       ctx.fillText(`Score: ${state.score}`, canvas.width - 120, 30)
     }
 
@@ -199,9 +204,9 @@ export default function GameView() {
       ctx.fillStyle = 'rgba(10, 22, 40, 0.8)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
       ctx.fillStyle = colors.text
-      ctx.font = '24px JetBrains Mono'
+      ctx.font = "24px 'JetBrains Mono', monospace"
       ctx.fillText('GAME OVER', canvas.width / 2 - 80, 100)
-      ctx.font = '16px JetBrains Mono'
+      ctx.font = "16px 'JetBrains Mono', monospace"
       ctx.fillText(`Final Score: ${state.score}`, canvas.width / 2 - 70, 130)
     }
 
