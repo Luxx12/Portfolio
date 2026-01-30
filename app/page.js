@@ -26,12 +26,12 @@ export default function Home() {
   return (
     // using a react fragment to return all the elements without using a div
     <>
-      // renders nav bar, highlights button based on whats the current page, uses setCurrentView to allow buttons to actually change pages
+      
       <Navbar currentView={currentView} setCurrentView={handleViewChange} />
       
-      <main className="flex-1 py-10 px-4 md:px-5 max-w-[700px] w-full"> // tailwind bs to style the nav bar a lil
-        <div key={viewKey} className="page-transition"> // when key changes react treats it as a new element and remounts it which restarts the animation page-transition
-          // below are all conditional rendering, only one can be true at a time
+      <main className="flex-1 py-10 px-4 md:px-5 max-w-[700px] w-full"> 
+        <div key={viewKey} className="page-transition"> 
+          
           {currentView === 'home' && <HomeView />}
           {currentView === 'about' && <AboutView />}
           {currentView === 'projects' && <ProjectsView />}
@@ -40,13 +40,13 @@ export default function Home() {
           {currentView === 'game' && <GameView />}
         </div>
 
-          // sets up terminal below the page and makes it where commands can change pages
+          
         <div className="mt-10">
           <Terminal setCurrentView={handleViewChange} />
         </div>
       </main>
 
-      <footer className="w-full border-t-2 border-terminal-border py-5 text-center text-terminal-dim text-sm"> // tailwind styling wtv
+      <footer className="w-full border-t-2 border-terminal-border py-5 text-center text-terminal-dim text-sm"> 
       </footer>
     </>
   )
