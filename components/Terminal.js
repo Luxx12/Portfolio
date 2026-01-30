@@ -2,11 +2,13 @@
 
 import { useState, useRef, useEffect } from 'react'
 
+// automatically sets up terminal in every page, recieves setCurrentView from Page.js so commands can change pages
 export default function Terminal({ setCurrentView }) {
-  const [input, setInput] = useState('')
-  const [output, setOutput] = useState([])
-  const inputRef = useRef(null)
+  const [input, setInput] = useState('') // allows user input
+  const [output, setOutput] = useState([]) // shows history of commands
+  const inputRef = useRef(null) //reference input element for focusing
 
+  // object mapping command names to functions
   const commands = {
     help: showHelp,
     '?': showHelp,
@@ -23,11 +25,13 @@ export default function Terminal({ setCurrentView }) {
     clear: () => { setOutput([]); return null },
   }
 
+  // allows for page changing based on the command inputted
   function navigate(page) {
     setCurrentView(page)
     return <span className="text-terminal-dim">Navigated to {page}</span>
   }
 
+  // return JSX of all commands
   function showHelp() {
     return (
       <div className="py-4">
@@ -49,6 +53,7 @@ export default function Terminal({ setCurrentView }) {
     )
   }
 
+  // returns JSX of my education
   function showEducation() {
     return (
       <div className="py-4">
@@ -65,6 +70,7 @@ export default function Terminal({ setCurrentView }) {
     )
   }
 
+  // returns JSX of my experience
   function showExperience() {
     return (
       <div className="py-4">
@@ -104,6 +110,7 @@ export default function Terminal({ setCurrentView }) {
     )
   }
 
+  // returns JSX of my skills
   function showSkills() {
     return (
       <div className="py-4">
@@ -132,6 +139,7 @@ export default function Terminal({ setCurrentView }) {
     )
   }
 
+  // returns JSX of my contacts along with links to them
   function showSocials() {
     return (
       <div className="py-4">
@@ -143,6 +151,7 @@ export default function Terminal({ setCurrentView }) {
     )
   }
 
+  // this proccesses wtv user inputs, trims out any extra space and checks if command exists by passing it into the commands hash map, if it exists it returns the function associated with that id
   function processCommand(cmd) {
     const trimmedCmd = cmd.trim().toLowerCase()
     if (trimmedCmd === '') return null
@@ -153,10 +162,12 @@ export default function Terminal({ setCurrentView }) {
     }
   }
 
+  // called when usr presses enter
   function handleSubmit(e) {
-    e.preventDefault()
-    const result = processCommand(input)
-    
+    e.preventDefault() // prevents page refreshing
+    const result = processCommand(input) 
+
+    // checks if input isn't clear or empty, if not adds to array of used commands to show in history of commaands
     if (input.trim().toLowerCase() !== 'clear' && input.trim() !== '') {
       setOutput(prev => [
         { command: input, result },
@@ -167,6 +178,7 @@ export default function Terminal({ setCurrentView }) {
     setInput('')
   }
 
+  // when component mounts, if user clicks anywhere that isn't a contact form or game screen, it immediately goes down to the terminal input
   useEffect(() => {
     const handleClick = (e) => {
       if (!e.target.closest('.contact-form') && !e.target.closest('.game-container')) {
@@ -174,7 +186,7 @@ export default function Terminal({ setCurrentView }) {
       }
     }
     document.addEventListener('click', handleClick)
-    return () => document.removeEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick) // cleans up listener when component unmounts
   }, [])
 
   return (
