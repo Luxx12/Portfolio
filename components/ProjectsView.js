@@ -13,15 +13,15 @@ export default function ProjectsView() {
     },
     {
       name: 'InfoScope',
-      date: 'Oct 2024',
+      date: 'Oct 2025',
       tech: 'JavaScript, HTML, CSS, Chrome APIs, Google Gemini API',
-      award: 'Built at ShellHacks 2024',
+      award: 'Built at ShellHacks 2025',
       awardType: 'dim',
       description: 'Chrome extension that extracts article content and provides AI-powered summaries. Integrated Gemini API with error handling and secure key storage. Built message passing architecture between popup UI and content scripts using Chrome Extensions API.',
     },
     {
       name: 'NeuroView',
-      date: 'Jan 2025',
+      date: 'Jan 2026',
       tech: 'HTML, CSS, JavaScript, Three.js, FastAPI, WebSockets, NiBabel, NumPy, SciPy, scikit-image',
       award: 'Won Best User Design at SwampHacks XI',
       awardType: 'success',
